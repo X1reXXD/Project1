@@ -34,8 +34,19 @@ def products_list(request: HttpRequest):
     return render(request, 'shopapp/products-list.html', context=context)
 
 
+"""
+Для оптимизации использовать .select_related("user").prefetch_related("products") чтобы сразу загрузить
+всех пользователей и все продукты вместо того чтобы подгружать их при каждом заказе.
+
+database
+
+select_related полезен, когда работаешь с отношениями «один к одному» и «один ко многим»,
+а prefetch_related полезен при работе с отношениями «многие ко многим»
+"""
+
+
 def orders_list(request: HttpRequest):
     context = {
-        "orders": Order.objects.all(),
+        "orders": Order.objects.select_related("user").prefetch_related("products").all(),
     }
     return render(request, 'shopapp/orders-list.html', context=context)
