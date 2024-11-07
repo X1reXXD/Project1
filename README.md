@@ -1,9 +1,11 @@
-This is my educational project that i'll comlete when i'll finish the course.
-
-/admin/
-/shop/
-/shop/groups/
-/shop/products/
-
-login: admin
-pass: admin
+<h1>This is my educational project i'll comlete when i'll finish the course.</h1>
+<div>
+<p>/admin/</p>
+<p>/shop/</p>
+<p>/shop/groups/</p>
+<p>/shop/products/</p>
+<p>/shop/orders/</p>
+<p>-----------</p>
+<p>login: admin</p>
+<p>pass: admin</p>
+</div>
