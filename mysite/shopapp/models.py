@@ -13,8 +13,8 @@ python manage.py migrate shopapp ****
 
 class Product(models.Model):
     class Meta:
-        ordering = ["name"]
         # Сортировка продуктов по названию
+        ordering = ["name"]
 
         # db_table = "tech_products"
         # verbose_name_plural = "products"
@@ -25,6 +25,19 @@ class Product(models.Model):
     discount = models.SmallIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     archived = models.BooleanField(default=False)
+
+    # Добавление многоточия в конце вместо длинного описания после 48 символов
+    # (Перенес в админку тк больше эта функция нигде не нужна)
+    # @property
+    # def description_short(self) -> str:
+    # if len(self.description) < 48:
+    # return self.description
+    # return self.description[:48] + "..."
+
+    # Изменение представления объекта в административной панели
+    def __str__(self) -> str:
+        return f"Product(pk={self.pk}, name={self.name!r})"
+        # !r - репрезентативный вид текста (в кавычках)
 
 
 class Order(models.Model):
